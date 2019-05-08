@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class Lab
 {
@@ -13,17 +15,19 @@ public class Lab
     {
         //Создаём системную переменную которая содержит путь к драйверу
         System.setProperty("webdriver.chrome.driver","src\\main\\java\\com\\mainacad\\drivers\\chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver","/drivers/chromedriverWin.exe");
 
         //My variables
         String myName = "Andrii";
         String myLastName = "Heha";
         String myDate = "07.05.2019";
+
         //Создаём вебдрайвер
         WebDriver driver = new ChromeDriver();
 
         //Открываем тестовую страницу
         driver.get("https://www.toolsqa.com/automation-practice-form/");
+
+        //открываем полное окно
         driver.manage().window().maximize();
 
         //TODO: Вывести в консоль текст Инфо сообщения
@@ -88,11 +92,16 @@ public class Lab
         WebElement submitButton = driver.findElement(By.id("submit"));
         submitButton.click();
 
+        //Waiting till Text 1 and Text2 will appear
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         //TODO: Вывести в консоль текст лейбла Text1
+        String printText1 = driver.findElement(By.id("NextedText")).getText();
+        System.out.println(printText1);
 
         //TODO: Вывести в консоль текст лейбла Text2
 
         //TODO: Закрыть браузер
-
+        driver.close();
     }
 }
