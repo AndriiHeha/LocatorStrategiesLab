@@ -27,7 +27,7 @@ public class Lab
         //Открываем тестовую страницу
         driver.get("https://www.toolsqa.com/automation-practice-form/");
 
-        //открываем полное окно
+        //open full size window
         driver.manage().window().maximize();
 
         //TODO: Вывести в консоль текст Инфо сообщения
@@ -77,7 +77,6 @@ public class Lab
         WebElement autoToolSeleniumWebDriver = driver.findElement(By.id("tool-2"));
         autoToolSeleniumWebDriver.click();
 
-
         //TODO: Выбрать континент из выпадающего списка
         Select selectContinents = new Select(driver.findElement(By.id("continents")));
         selectContinents.selectByVisibleText("Europe");
@@ -92,7 +91,7 @@ public class Lab
         WebElement submitButton = driver.findElement(By.id("submit"));
         submitButton.click();
 
-        //Waiting till Text 1 and Text2 will appear
+        //Waiting till Text 1 and Text2 is appear
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         //TODO: Вывести в консоль текст лейбла Text1
